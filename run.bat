@@ -1,3 +1,2 @@
 @echo off
-start python "./tool.py"
-pause
+cmd /k python tool.py
