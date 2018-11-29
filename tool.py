@@ -63,6 +63,11 @@ def copy_img():
     for i in range(len(file_list_des)):
         if file_list_des[i] in file_list_src:
             file_list_src.remove(file_list_des[i])
+    for infile in file_list_src:
+        img = Image.open(src_dir+infile)
+        img.save(des_dir + infile)
+		
+		
     
 
 def compress(choose, des_dir, src_dir, file_list):
