@@ -46,26 +46,6 @@ def print_help():
     3) smaller compress(4M to 300K around)
     """)
 	
-def copy_img():
-    src_dir, des_dir = "src/", "photos/"
-    
-    if directory_exists(src_dir):
-        if not directory_exists(src_dir):
-            make_directory(src_dir)
-        # business logic
-        file_list_src = list_img_file(src_dir)
-    if directory_exists(des_dir):
-        if not directory_exists(des_dir):
-            make_directory(des_dir)
-        file_list_des = list_img_file(des_dir)
-        # print file_list
-    '''如果已经压缩了，就不再压缩'''
-    for i in range(len(file_list_des)):
-        if file_list_des[i] in file_list_src:
-            file_list_src.remove(file_list_des[i])
-    for infile in file_list_src:
-        img = Image.open(src_dir+infile)
-        img.save(des_dir + infile)
 		
 		
     
@@ -192,7 +172,6 @@ def git_operation():
     os.system('git push origin master')
 
 if __name__ == "__main__":
-    copy_img()
     cut_photo()        # 裁剪图片，裁剪成正方形，去中间部分
     compress_photo()   # 压缩图片，并保存到mini_photos文件夹下
     git_operation()    # 提交到github仓库
